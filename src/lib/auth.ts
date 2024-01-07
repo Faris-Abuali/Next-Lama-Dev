@@ -32,7 +32,10 @@ export const {
     }),
   ],
   callbacks: {
+    // These callbacks are run AFTER each action.
     signIn: async ({ account, profile }) => {
+
+      // If the user is signing in with GitHub, check if they are already in the database.
       if (account?.provider === "github") {
         connectToDb();
         try {
